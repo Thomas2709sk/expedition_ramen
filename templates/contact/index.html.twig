@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<section class="flux mt-4">
+		<div>
+			<h2>Nous contacter</h2>
+		</div>
+
+		<div class="container my-3">
+  <div class="p-4 rounded-3 bg-light border border-2 border-primary d-flex flex-wrap flex-lg-nowrap align-items-center justify-content-between gap-3">
+    <div class="d-flex align-items-center info-block">
+      <i class="bi bi-geo-alt text-info me-2"></i>
+      <span><strong>Adresse :</strong> 12 rue du Japon, 75000 Paris</span>
+    </div>
+    <div class="d-flex align-items-center info-block">
+      <i class="bi bi-telephone text-info me-2"></i>
+      <span><strong>Tél :</strong> 01 02 03 04 05</span>
+    </div>
+    <div class="d-flex align-items-center info-block">
+      <i class="bi bi-envelope text-info me-2"></i>
+      <span><strong>Email :</strong> <a href="mailto:contact@expedition-ramen.fr">contact@expedition-ramen.fr</a></span>
+    </div>
+    <div class="d-flex align-items-center info-block">
+      <i class="bi bi-clock text-info me-2"></i>
+      <span>
+        <strong>Horaires :</strong>
+        <span class="d-none d-lg-inline">Mar-Dim&nbsp;: <b>Midi</b> 11h30-14h00, <b>Soir</b> 18h00-21h00</span>
+        <span class="d-lg-none">Mar-Dim :<br><b>Midi</b> 11h30-14h00<br><b>Soir</b> 18h00-21h00</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+		<section class="d-flex justify-content-center">
+			<div class="col-12 col-md-8 col-lg-6">
+				<div class="bg-info bg-opacity-75 rounded-3 shadow p-4 my-4 border border-2 border-light">
+					<h1 class="text-center">Contactez-nous</h1>
+					<!-- Contact form -->
+					{{ form_start(contactForm) }}
+					<div class="mb-3">
+						{{ form_label(contactForm.prenom, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+						{{ form_widget(contactForm.prenom) }}
+						{{ form_errors(contactForm.prenom) }}
+					</div>
+					<div class="mb-3">
+						{{ form_label(contactForm.email, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+						{{ form_widget(contactForm.email) }}
+						{{ form_errors(contactForm.email) }}
+					</div>
+					<div class="mb-3">
+						{{ form_label(contactForm.subject, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+						{{ form_widget(contactForm.subject, {'attr': {'class': 'form-select'}}) }}
+						{{ form_errors(contactForm.subject) }}
+					</div>
+					<div class="mb-3">
+						{{ form_label(contactForm.message, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+						{{ form_widget(contactForm.message, {'attr': {'class': 'form-control', 'rows': 6}}) }}
+						{{ form_errors(contactForm.message) }}
+					</div>
+					<div class="text-center">
+						<button class="w-100 btn btn-secondary">Envoyer</button>
+					</div>
+					{{ form_end(contactForm) }}
+				</div>
+			</div>
+		</section>
+	</section>
+{% endblock %}

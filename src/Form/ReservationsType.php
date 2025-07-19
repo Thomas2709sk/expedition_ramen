@@ -73,7 +73,7 @@ class ReservationsType extends AbstractType
                 'label' => 'Créneau horaire',
                 'input' => 'datetime',
                 'widget' => 'choice',
-                'hours' => [12, 13, 19, 20],
+                'hours' => [11, 12, 13, 18, 19, 20],
                 'minutes' => [0, 30],
             ])
         ;

@@ -34,7 +34,7 @@
             <a class="fs-4" href="{{ path('index') }}">Accueil</a>
             <a class="fs-4" href="{{ path('app_carte') }}">Carte</a>
             <a class="fs-4" href="{{ path('app_reservations_new') }}">Réservation</a>
-            <a class="fs-4" href="#">Contact</a>
+            <a class="fs-4" href="{{ path('app_contact') }}">Contact</a>
              {% if not app.user %}
             <a href="{{ path('app_login') }}"
                class="text-muted position-absolute start-0 bottom-0 m-3">
