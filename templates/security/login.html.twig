@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	<section class="container my-5 min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row justify-content-center w-100">
+        <div class="col-lg-6 col-md-8 col-12">
+            <div class="card shadow-lg p-4 px-sm-5 border border-2 bg-info">
+                <h1 class="text-center text-white mb-4">Connexion</h1>
+                <form method="post" autocomplete="on">
+                    {% if error and not app.user %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% if app.user %}
+                        <div class="mb-3 text-white">
+                            Vous êtes déjà connecté en tant que
+                            <strong>{{ app.user.userIdentifier }}</strong>,
+                            <a href="{{ path('app_logout') }}" class="link-light fw-bold">Me déconnecter</a>
+                        </div>
+                    {% endif %}
+                    <div class="form-floating mb-3">
+                        <input type="email" value="{{ last_username }}" name="_username" id="email" class="form-control" autocomplete="email" required autofocus placeholder=" ">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required placeholder=" ">
+                        <label for="password">Mot de passe</label>
+                    </div>
+                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                    <button class="btn btn-secondary rounded w-100 mb-2" id="login-button" type="submit">
+                        <i class="fas fa-sign-in-alt me-2"></i>Connexion
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

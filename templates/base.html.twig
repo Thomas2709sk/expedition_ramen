@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     {% block stylesheets %}
+     {# Font awesome #}
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -33,6 +35,15 @@
             <a class="fs-4" href="#">Carte</a>
             <a class="fs-4" href="#">Réservation</a>
             <a class="fs-4" href="#">Contact</a>
+             {% if not app.user %}
+            <a href="{{ path('app_login') }}"
+               class="text-muted position-absolute start-0 bottom-0 m-3">
+                <i class="fas fs-5 text-white fa-gear fa-2x"></i>
+            </a>
+            {% else %}
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                <a href="">Administrateur</a>
+        {% endif %}
           </nav>
         </header>
         <main class="col">
