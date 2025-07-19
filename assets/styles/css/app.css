@@ -11902,10 +11902,9 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 
 .sidebar a:hover {
-  color: #f2c700;
+  color: #F2A35E;
 }
 
-/* Fixe la sidebar sur desktop uniquement */
 @media (min-width: 992px) {
   .sidebar {
     position: fixed;

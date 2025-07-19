@@ -32,7 +32,7 @@
           <nav class="sidebar">
             <h2 class="fs-1">Expedition Ramen</h2>
             <a class="fs-4" href="{{ path('index') }}">Accueil</a>
-            <a class="fs-4" href="#">Carte</a>
+            <a class="fs-4" href="{{ path('app_carte') }}">Carte</a>
             <a class="fs-4" href="{{ path('app_reservations_new') }}">Réservation</a>
             <a class="fs-4" href="#">Contact</a>
              {% if not app.user %}
@@ -52,7 +52,7 @@
         </main>
       </div>
     </div>
-    <footer class=" d-flex justify-content-end align-items-center container-fluid">
+    <footer class="pt-4 d-flex justify-content-end align-items-center container-fluid">
       <p class="mb-0">&copy; 2025 Expedition Ramen.</p>
       <a href="#">Mentions légales</a>
     </footer>
