@@ -1,0 +1,12 @@
+<h2>Merci pour votre réservation !</h2>
+<p>Voici le récapitulatif :</p>
+<ul>
+    <li><strong>Nom :</strong> {{ reservation.name }}</li>
+    <li><strong>Email :</strong> {{ reservation.email }}</li>
+    <li><strong>Téléphone :</strong> {{ reservation.phone }}</li>
+    <li><strong>Nombre de personnes :</strong> {{ reservation.people }}</li>
+    <li><strong>Jour :</strong> {{ reservation.day|date('d/m/Y') }}</li>
+    <li><strong>Créneau horaire :</strong> {{ reservation.time|date('H:i') }}</li>
+    <li><strong>Commentaire :</strong> {{ reservation.commentary }}</li>
+</ul>
+<p>Nous avons bien pris en compte votre demande. À bientôt !</p>

@@ -33,7 +33,7 @@
             <h2 class="fs-1">Expedition Ramen</h2>
             <a class="fs-4" href="{{ path('index') }}">Accueil</a>
             <a class="fs-4" href="#">Carte</a>
-            <a class="fs-4" href="#">Réservation</a>
+            <a class="fs-4" href="{{ path('app_reservations_new') }}">Réservation</a>
             <a class="fs-4" href="#">Contact</a>
              {% if not app.user %}
             <a href="{{ path('app_login') }}"
@@ -47,6 +47,7 @@
           </nav>
         </header>
         <main class="col">
+        {% include "flash_message.html.twig" %}
           {% block body %}{% endblock %}
         </main>
       </div>

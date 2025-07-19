@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Reservations{% endblock %}
+{% block title %}Demande de réservation{% endblock %}
 
 {% block body %}
-    <h1>Create new Reservations</h1>
+    <section class="flux mt-4">
+    <h1>Demande de réservation</h1>
 
     {{ include('reservations/_form.html.twig') }}
 
-    <a href="{{ path('app_reservations_index') }}">back to list</a>
+    </section>
 {% endblock %}

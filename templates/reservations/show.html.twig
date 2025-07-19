@@ -12,7 +12,7 @@
                 <td>{{ reservation.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <td>{{ reservation.name }}</td>
             </tr>
             <tr>
@@ -20,27 +20,32 @@
                 <td>{{ reservation.email }}</td>
             </tr>
             <tr>
-                <th>Phone</th>
+                <th>Téléphone</th>
                 <td>{{ reservation.phone }}</td>
             </tr>
             <tr>
-                <th>Commentary</th>
+                <th>Commentaire</th>
                 <td>{{ reservation.commentary }}</td>
             </tr>
             <tr>
-                <th>People</th>
+                <th>Personnes</th>
                 <td>{{ reservation.people }}</td>
             </tr>
             <tr>
-                <th>Time</th>
-                <td>{{ reservation.time ? reservation.time|date('H:i:s') : '' }}</td>
+                <th>Jour</th>
+                <td>{{ reservation.day|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ reservation.time ? reservation.time|date('H:i') : '' }}</td>
             </tr>
         </tbody>
     </table>
+    <div class="mb-2">
+    <a class="btn btn-info" href="{{ path('app_reservations_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('app_reservations_index') }}">back to list</a>
-
-    <a href="{{ path('app_reservations_edit', {'id': reservation.id}) }}">edit</a>
+    <a class="btn btn-warning" href="{{ path('app_reservations_edit', {'id': reservation.id}) }}">Modifier</a>
+    </div>
 
     {{ include('reservations/_delete_form.html.twig') }}
 {% endblock %}

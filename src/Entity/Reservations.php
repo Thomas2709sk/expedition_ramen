@@ -32,6 +32,9 @@ class Reservations
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTime $time = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTime $day = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Reservations
     public function setTime(\DateTime $time): static
     {
         $this->time = $time;
+
+        return $this;
+    }
+
+    public function getDay(): ?\DateTime
+    {
+        return $this->day;
+    }
+
+    public function setDay(\DateTime $day): static
+    {
+        $this->day = $day;
 
         return $this;
     }

@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/reservations')]
@@ -23,7 +25,7 @@ final class ReservationsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_reservations_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $reservation = new Reservations();
         $form = $this->createForm(ReservationsType::class, $reservation);
@@ -33,7 +35,21 @@ final class ReservationsController extends AbstractController
             $entityManager->persist($reservation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_reservations_index', [], Response::HTTP_SEE_OTHER);
+            $body = $this->renderView('reservations/email_confirmation.html.twig', [
+                'reservation' => $reservation,
+            ]);
+            $email = (new Email())
+                ->from('no-reply@expedition-ramen.fr')
+                ->to($reservation->getEmail())
+                ->subject('Confirmation de votre réservation')
+                ->html($body);
+
+            $mailer->send($email);
+
+            
+            $this->addFlash('success', 'Votre réservation a bien été enregistrée. Un email de confirmation vous a été envoyé.');
+
+            return $this->redirectToRoute('app_reservations_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reservations/new.html.twig', [
@@ -71,7 +87,7 @@ final class ReservationsController extends AbstractController
     #[Route('/{id}', name: 'app_reservations_delete', methods: ['POST'])]
     public function delete(Request $request, Reservations $reservation, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $reservation->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($reservation);
             $entityManager->flush();
         }

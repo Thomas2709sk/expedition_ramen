@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reservations index{% endblock %}
+{% block title %}Liste des réservations{% endblock %}
 
 {% block body %}
-    <h1>Reservations index</h1>
-
-    <table class="table">
+<section class="container mt-4">
+    <h1>Liste des réservations</h1>
+    <div class="table-responsive">
+    <table class="table table-striped table-primary">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Commentary</th>
-                <th>People</th>
-                <th>Time</th>
+                <th>Téléphone</th>
+                <th>Commentaire</th>
+                <th>Personnes</th>
+                <th>Jour</th>
+                <th>Heure</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,19 +29,20 @@
                 <td>{{ reservation.phone }}</td>
                 <td>{{ reservation.commentary }}</td>
                 <td>{{ reservation.people }}</td>
-                <td>{{ reservation.time ? reservation.time|date('H:i:s') : '' }}</td>
+                <td>{{ reservation.day|date('d/m/Y') }}</td>
+                <td>{{ reservation.time ? reservation.time|date('H:i') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_reservations_show', {'id': reservation.id}) }}">show</a>
-                    <a href="{{ path('app_reservations_edit', {'id': reservation.id}) }}">edit</a>
+                    <a class="btn btn-info btn-sm" href="{{ path('app_reservations_show', {'id': reservation.id}) }}">Voir</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('app_reservations_edit', {'id': reservation.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="9">Pas de réservations</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_reservations_new') }}">Create new</a>
+    </div>
+</section>
 {% endblock %}
