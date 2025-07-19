@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="flux mt-4">
+    <h2 class="text-center mb-5 fs-1">La carte</h2>
+
+    <div class="row mb-5 align-items-center">
+        <div class="col-12 col-md-8 col-lg-8">
+            <h3>Ramen ラーメン</h3>
+            <ul class="list-unstyled menu-list">
+                {% for ramen in ramens %}
+                    <li class="mb-4">
+                        <span class="menu-title fw-bold">{{ ramen.name }}</span>
+                        <span class="menu-price ms-2">{{ ramen.price }} €</span>
+                        <div class="menu-description mt-2">{{ ramen.description }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class=" col-md-4 col-lg-4">
+          <img src="{{ asset('/images/cartea.jpg') }}" alt="comptoir de restaurant" class="img-fluid" style="height:650px; width:350px; object-fit:cover;">
+        </div>
+    </div>
+
+    <div class="row mb-5 align-items-center flex-row-reverse">
+        <div class="col-12 col-md-8 col-lg-8">
+            <h3>Accompagnements サイドディッシュ</h3>
+            <ul class="list-unstyled menu-list">
+                {% for side in sides %}
+                    <li class="mb-4">
+                        <span class="menu-title fw-bold">{{ side.name }}</span>
+                        <span class="menu-price ms-2">{{ side.price }} €</span>
+                        <div class="menu-description mt-2">{{ side.description }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4 col-lg-4">
+            <img src="{{ asset('/images/carteb.jpg') }}" alt="comptoir de restaurant" class="img-fluid" style="height:650px; width:350px; object-fit:cover;">
+        </div>
+    </div>
+</section>
+{% endblock %}
