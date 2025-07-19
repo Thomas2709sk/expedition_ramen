@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Side{% endblock %}
+{% block title %}Ajouter accompagnements{% endblock %}
 
 {% block body %}
-    <h1>Create new Side</h1>
+<section class="flux mt-4">
+    <h1>Ajouter accompagnements</h1>
 
     {{ include('side/_form.html.twig') }}
 
-    <a href="{{ path('app_side_index') }}">back to list</a>
+    <a href="{{ path('app_side_index') }}">Revenir à la liste</a>
+</section>
 {% endblock %}

@@ -1,39 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Side index{% endblock %}
+{% block title %}Liste des accompagnements
+{% endblock %}
 
 {% block body %}
-    <h1>Side index</h1>
+<section class="container mt-4">
+	<h1>Liste des accompagnements</h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-secondary">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Prix</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for side in sides %}
+					<tr>
+						<td>{{ side.id }}</td>
+						<td>{{ side.name }}</td>
+						<td>{{ side.description }}</td>
+						<td>{{ side.price }}</td>
+						<td>
+							<a class="btn btn-info btn-sm" href="{{ path('app_side_show', {'id': side.id}) }}">Voir</a>
+							<a class="btn btn-warning btn-sm" href="{{ path('app_side_edit', {'id': side.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Pas encore d'accompagnements</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for side in sides %}
-            <tr>
-                <td>{{ side.id }}</td>
-                <td>{{ side.name }}</td>
-                <td>{{ side.description }}</td>
-                <td>{{ side.price }}</td>
-                <td>
-                    <a href="{{ path('app_side_show', {'id': side.id}) }}">show</a>
-                    <a href="{{ path('app_side_edit', {'id': side.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_side_new') }}">Create new</a>
+	<a class="btn btn-success" href="{{ path('app_side_new') }}">Ajouter nouveau</a>
+</section>
 {% endblock %}

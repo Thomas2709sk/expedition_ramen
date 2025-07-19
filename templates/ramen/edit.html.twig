@@ -3,6 +3,7 @@
 {% block title %}Modifier Ramen{% endblock %}
 
 {% block body %}
+<section class="flux mt-4">
     <h1>Modifier Ramen</h1>
 
     {{ include('ramen/_form.html.twig', {'button_label': 'Modifier'}) }}
@@ -10,4 +11,5 @@
     <a href="{{ path('app_ramen_index') }}">Revenir à la liste</a>
 
     {{ include('ramen/_delete_form.html.twig') }}
+</section>
 {% endblock %}
