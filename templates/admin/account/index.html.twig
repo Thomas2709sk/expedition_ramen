@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+<section class="container flux mt-3">
+    <h2 class="border-bottom">Espace administrateur</h2>
+    <div class="mt-3">
+        <h3>Ramen</h3>
+        <a class="btn btn-secondary" href="{{ path('app_ramen_new') }}">Ajouter</a>
+        <a class="btn btn-secondary" href="{{ path('app_ramen_index') }}">Liste</a>
+    </div>
+    <div class="mt-3">
+        <h3>Accompagnements</h3>
+        <a class="btn btn-secondary" href="{{ path('app_side_new') }}">Ajouter</a>
+        <a class="btn btn-secondary" href="{{ path('app_side_index') }}">Liste</a>
+    </div>
+    <div class="mt-3">
+        <h3>Réservations</h3>
+        <a class="btn btn-secondary" href="{{ path('app_reservations_index') }}">Voir</a>
+    </div>
+</section>
+{% endblock %}

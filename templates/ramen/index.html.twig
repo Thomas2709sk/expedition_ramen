@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des ramen
+{% endblock %}
+
+{% block body %}
+<section class="container mt-4">
+	<h1>Liste des ramen</h1>
+	<div class="table-responsive">
+		<table class="table table-striped table-secondary">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Description</th>
+					<th>Prix</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for raman in ramens %}
+					<tr>
+						<td>{{ raman.id }}</td>
+						<td>{{ raman.name }}</td>
+						<td>{{ raman.description }}</td>
+						<td>{{ raman.price }}</td>
+						<td>
+							<a class="btn btn-info btn-sm mb-2" href="{{ path('app_ramen_show', {'id': raman.id}) }}">Voir</a>
+							<a class="btn btn-warning btn-sm" href="{{ path('app_ramen_edit', {'id': raman.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Pas de ramen</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<a class="btn btn-success" href="{{ path('app_ramen_new') }}">Ajouter nouveau</a>
+</section>
+{% endblock %}
