@@ -2,6 +2,10 @@
 
 {% block title %}Demande de réservation{% endblock %}
 
+{% block importmap %}
+        {{ importmap(['app', 'date']) }}
+      {% endblock %}
+
 {% block body %}
     <section class="flux mt-4">
     <h1>Demande de réservation</h1>
