@@ -3,6 +3,10 @@
 {% block title %}Connexion
 {% endblock %}
 
+{% block importmap %}
+    {{ importmap(['app', 'login']) }}
+{% endblock %}
+
 {% block body %}
 	<section class="container my-5 min-vh-100 d-flex align-items-center justify-content-center">
     <div class="row justify-content-center w-100">
@@ -30,7 +34,7 @@
                     </div>
                     <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
                     <button class="btn btn-secondary rounded w-100 mb-2" id="login-button" type="submit">
-                        <i class="fas fa-sign-in-alt me-2"></i>Connexion
+                        <i class="fas fa-sign-in-alt me-2" disabled></i>Connexion
                     </button>
                 </form>
             </div>

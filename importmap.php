@@ -20,6 +20,10 @@ return [
         'path' => './assets/js/date.js',
         'entrypoint' => true,
     ],
+    'login' => [
+        'path' => './assets/js/login.js',
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
